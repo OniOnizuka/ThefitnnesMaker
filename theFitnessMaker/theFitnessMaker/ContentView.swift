@@ -12,7 +12,10 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            VStack {
+        
+            VStack(alignment: .leading) {
+                
+                //Main Card View
                 ZStack {
                     Image("fitness-workout")
                         .resizable()
@@ -41,75 +44,51 @@ struct ContentView: View {
                 .cornerRadius(20)
                 .clipped()
                 .shadow(radius: 8)
-                .padding(.top,20)
+//              .padding(.top,20)
+                .padding()
                 
                 Text("Weekly Plan")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
                     .padding()
                 // Stack where the inner elements are arranged/stacked horizontally
-                HStack {
-                    
-                    // day card
-                    ZStack {
-                        Image("push-ups")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(height:220)
-                        
-                        //Vertical Stack - where objects are stacked vertically
-                        VStack {
-                            
-                            Spacer()
-                            
-                            Text("Monday")
-                                .font(.title)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.white)
-                            Text("Chest")
-                                .fontWeight(.regular)
-                                .foregroundColor(.white)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing:30) {
+                        ForEach(0..<5){ item in
+                            // day card
+                            ZStack {
+                                Image("push-ups")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(height:220)
+                                
+                                //Vertical Stack - where objects are stacked vertically
+                                VStack {
+                                    
+                                    Spacer()
+                                    
+                                    Text("Monday")
+                                        .font(.title)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.white)
+                                    Text("Chest")
+                                        .fontWeight(.regular)
+                                        .foregroundColor(.white)
+                                }
+                                .padding()
+                                .frame(width: 150)
+                                .background(Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 0.5)))
+                                
+                            }
+                            .frame(width:150, height: 220)
+                            .clipped()
+                            .cornerRadius(20)
+                            .shadow(radius: 8)
                         }
-                        .padding()
-                        .frame(width: 150)
-                        .background(Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 0.5)))
-                        
                     }
-                    .frame(width:150, height: 220)
-                    .clipped()
-                    .cornerRadius(20)
-                    .shadow(radius: 8)
-                    
-                    // day card
-                    ZStack {
-                        Image("push-ups")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(height:220)
-                        
-                        //Vertical Stack - where objects are stacked vertically
-                        VStack {
-                            
-                            Spacer()
-                            
-                            Text("Monday")
-                                .font(.title)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.white)
-                            Text("Chest")
-                                .fontWeight(.regular)
-                                .foregroundColor(.white)
-                        }
-                        .padding()
-                        .frame(width: 150)
-                        .background(Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 0.5)))
-                        
-                    }
-                    .frame(width:150, height: 220)
-                    .clipped()
-                    .cornerRadius(20)
-                    .shadow(radius: 8)
+                    .padding()
                 }
+                .offset(x:0, y: -40)
                 
                 Spacer()
             }
