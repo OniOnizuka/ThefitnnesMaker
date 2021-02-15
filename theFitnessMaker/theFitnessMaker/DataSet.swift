@@ -27,3 +27,4 @@ let wworkoutsData = [
     Workout(day: "Wednesday", bodyPart: "Arms", image: "jeff-tumale-bdIWJKLp98U-unsplash", routine: ["Warmup", "Curls", "Cool Down"])
 ]
 
+
