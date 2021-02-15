@@ -10,6 +10,9 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 struct ContentView: View {
+   
+    let workouts = wworkoutsData
+    
     var body: some View {
         NavigationView {
         
@@ -44,20 +47,21 @@ struct ContentView: View {
                 .cornerRadius(20)
                 .clipped()
                 .shadow(radius: 8)
-//              .padding(.top,20)
+                //.padding(.top,20)
                 .padding()
                 
                 Text("Weekly Plan")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
                     .padding()
+                
                 // Stack where the inner elements are arranged/stacked horizontally
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing:30) {
-                        ForEach(0..<5){ item in
+                        ForEach(workouts){ Workout in
                             // day card
                             ZStack {
-                                Image("push-ups")
+                                Image(Workout.image)
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(height:220)
@@ -67,11 +71,11 @@ struct ContentView: View {
                                     
                                     Spacer()
                                     
-                                    Text("Monday")
+                                    Text(Workout.day)
                                         .font(.title)
                                         .fontWeight(.semibold)
                                         .foregroundColor(.white)
-                                    Text("Chest")
+                                    Text(Workout.bodyPart)
                                         .fontWeight(.regular)
                                         .foregroundColor(.white)
                                 }
