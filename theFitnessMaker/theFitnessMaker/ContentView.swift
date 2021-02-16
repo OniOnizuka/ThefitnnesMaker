@@ -11,7 +11,7 @@ import SwiftUI
 @available(iOS 13.0, *)
 struct ContentView: View {
    
-    let workouts = wworkoutsData
+    let workouts = workoutsData
     
     var body: some View {
         NavigationView {
@@ -59,55 +59,58 @@ struct ContentView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing:30) {
                         ForEach(workouts){ Workout in
+                            
                             // day card
-                            ZStack {
-                                Image(Workout.image)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(height:220)
-                                
-                                //Vertical Stack - where objects are stacked vertically
-                                VStack {
+                            NavigationLink(destination: WorkoutDetailView()){
+                                ZStack {
+                                    Image(Workout.image)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(height:220)
                                     
-                                    Spacer()
+                                    //Vertical Stack - where objects are stacked vertically
+                                    VStack {
+                                        
+                                        Spacer()
+                                        
+                                        Text(Workout.day)
+                                            .font(.title)
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.white)
+                                        Text(Workout.bodyPart)
+                                            .fontWeight(.regular)
+                                            .foregroundColor(.white)
+                                    }
+                                    .padding()
+                                    .frame(width: 150)
+                                    .background(Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 0.5)))
                                     
-                                    Text(Workout.day)
-                                        .font(.title)
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.white)
-                                    Text(Workout.bodyPart)
-                                        .fontWeight(.regular)
-                                        .foregroundColor(.white)
                                 }
-                                .padding()
-                                .frame(width: 150)
-                                .background(Color(#colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 0.5)))
-                                
+                                .frame(width:150, height: 220)
+                                .clipped()
+                                .cornerRadius(20)
+                                .shadow(radius: 8)
                             }
-                            .frame(width:150, height: 220)
-                            .clipped()
-                            .cornerRadius(20)
-                            .shadow(radius: 8)
                         }
+                        .padding()
                     }
-                    .padding()
+                    .offset(x:0, y: -40)
+                    
+                    Spacer()
                 }
-                .offset(x:0, y: -40)
-                
-                Spacer()
+                .navigationBarTitle("Home Workouts")
             }
-            .navigationBarTitle("Home Workouts")
         }
     }
-}
-
-@available(iOS 13.0, *)
-@available(iOS 13.0, *)
-@available(iOS 13.0, *)
-@available(iOS 13.0, *)
-@available(iOS 13.0, *)
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    @available(iOS 13.0, *)
+    @available(iOS 13.0, *)
+    @available(iOS 13.0, *)
+    @available(iOS 13.0, *)
+    @available(iOS 13.0, *)
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
 }

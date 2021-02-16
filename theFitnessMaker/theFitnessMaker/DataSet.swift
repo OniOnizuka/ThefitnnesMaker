@@ -21,7 +21,7 @@ struct Workout: Identifiable {
     var routine: [String]
 }
 
-let wworkoutsData = [
+let workoutsData = [
     Workout(day: "Monday", bodyPart: "Chest", image: "push-ups", routine: ["Warmup", "Pushups","Cool Down"]),
     Workout(day: "Tuesday", bodyPart: "Back", image: "fitness-workout", routine: ["Warmup","Pullups","Cool Down"]),
     Workout(day: "Wednesday", bodyPart: "Arms", image: "jeff-tumale-bdIWJKLp98U-unsplash", routine: ["Warmup", "Curls", "Cool Down"])
